@@ -1,0 +1,22 @@
+{
+  "ignition": {
+    "config": {},
+    "timeouts": {},
+    "version": "2.1.0"
+  },
+  "networkd": {},
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "passwordHash": "$1$q/zO15W7$aiJeek7kRA1DnfFWuaCVH0",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjMwxzh/EFR0qgV6GqLP0POrtDQOn7BTkCSLtnK6yLqMvrWkPgq4Lcowys1uyupCkGgtn56oYj/cCctCmTpn8qu/9JKZEGvqlJ/ObmPS+4lab8Ar7KSk5gqMLnZn0/NnWE8OtO/NZRx6CdxLK10kbm4/hebbB3mRS4QRq0ioL/FbzMITFJaQN6SEdNs646UA0xzFB4QY6JLKftUpwRqFseurINRZi++gfc6RvCyOCmqBMWDSk6ld9J2ZfLs0dOMjETQ6aL8xhjZqiMKz7DTsm1ZalvrctYwunLUDVwxRXziSd6ixYBLNg5o5Xv2AD8TVb4QISDF8b0QgYHRCOYsqNX",
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnisFDPAF6QteGkbqRsMxdRJYxbjU127SdP4FSW3/HoArxWPXGEmluZVrhXiHqQua2CoLCE/fDgSc1h+lqjJ2NrrgiTgxqgavwbtZkitO+wu3NLXWVSJhZlUqrPOCTRuwa8m3hq7IlEwf1EVoaBnt2ggv0CvUaqmG7XZUSebR5H0jxx6YEr5u2yZs95dhGOAKt1OTtutV6ehVnDQPJMGfZ0OeQit5H6k73G/sV3SWf56aBdBVhEQquCx/tV3C45xM664ns56sStEdNekpu6m60nn7HCi+pp8MlLtIrwGOB9mML5iyxANXQJwth14v23fd79V6Sm1Pt++hee91po9Cv"
+        ]
+      }
+    ]
+  },
+  "storage": {},
+  "systemd": {}
+}
