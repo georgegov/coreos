@@ -38,14 +38,17 @@ fi
 echo "Building images"
 cd $SPOTO_BASE_DIR/spoto-docker
 docker-compose -f $DOCKER_COMPOSE_1 -f $DOCKER_COMPOSE_2 build
-cd $SPOTO_BASE_DIR/spoto-whmcs-server-module/vue-app/.docker/
-docker build -t spoto/vie-cli:latest .
 
 echo "Running containers"
 cd $SPOTO_BASE_DIR/spoto-docker
 docker-compose -f $DOCKER_COMPOSE_1 -f $DOCKER_COMPOSE_2 up -d
+
+echo "Running Vue.js"
+cd $SPOTO_BASE_DIR/spoto-whmcs-server-module/vue-app/.docker/
+docker build -t spoto/vie-cli:latest .
 cd $SPOTO_BASE_DIR/spoto-whmcs-server-module/vue-app
-docker run -it --rm -v `pwd`:/usr/src/vue-app -w /usr/src/vue-app --name vuejs -itd -p 8081:8080 spoto/vie-cli:latest yarn serve
+docker run -it --rm -v `pwd`:/usr/src/vue-app -w /usr/src/vue-app --name vuejs spoto/vie-cli:latest yarn build
+docker run -it --rm -v `pwd`:/usr/src/vue-app -w /usr/src/vue-app --name vuejs -d -p 8081:8080 spoto/vie-cli:latest yarn serve
 
 echo "Creating database"
 docker exec -it spoto-docker_whmcs-mysql_1 /bin/bash -c "mysql -u root -p$MYSQL_PASSWORD -e 'create database whmcs'"
@@ -55,6 +58,7 @@ docker cp $SPOTO_BASE_DIR/spoto-docker/whmcs.sql spoto-docker_whmcs-mysql_1:/tmp
 docker exec -it spoto-docker_whmcs-mysql_1 /bin/bash -c "mysql -u root -p$MYSQL_PASSWORD whmcs < /tmp/whmcs.sql"
 
 echo "Running webhook-phpfpm database migrations and seeding"
+cd $SPOTO_BASE_DIR/spoto-docker
 docker-compose exec webhook-phpfpm php /code/artisan migrate
 docker-compose exec webhook-phpfpm php /code/artisan db:seed
 
